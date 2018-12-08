@@ -10,6 +10,14 @@ use App\Events\RoomDeleted;
 class RoomController extends Controller
 {
     /**
+     * Create a new controller instance
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Show a room
      *
      * @param  Room $room
