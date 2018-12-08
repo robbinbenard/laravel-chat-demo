@@ -65,18 +65,6 @@ class RoomController extends Controller
     }
 
     /**
-     * Invite a user to a room
-     *
-     * @param  Request $request
-     * @param  Room $room
-     * @return void
-     */
-    public function invite(Request $request, Room $room)
-    {
-        // todo ?
-    }
-
-    /**
      * Delete a room
      *
      * @param Room $room

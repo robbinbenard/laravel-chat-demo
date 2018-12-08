@@ -42,7 +42,7 @@ class ChatController extends Controller
             'message' => $request->message,
         ]);
 
-        $message->user = $request->user();
+        $message->setRelation('user', $request->user());
 
         broadcast(new MessageSent($room, $message))->toOthers();
 
