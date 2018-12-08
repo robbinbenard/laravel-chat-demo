@@ -11,6 +11,12 @@
 |
 */
 
-Broadcast::channel('chat', function ($user) {
+Broadcast::channel('rooms', function ($user) {
     return Auth::check();
-  });
+});
+
+Broadcast::channel('rooms.{room_id}', function ($user, $room_id) {
+    if ($user) {
+        return ['id' => $user->id, 'name' => $user->name];
+    }
+});

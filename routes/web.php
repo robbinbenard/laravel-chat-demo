@@ -14,6 +14,12 @@
 
 Auth::routes();
 
-Route::get('/', 'ChatController@index')->name('home');
-Route::get('messages', 'ChatController@messages');
-Route::post('messages', 'ChatController@store');
+Route::get('/', 'RoomController@index')->name('home');
+
+Route::get('messages/{room}', 'ChatController@messages');
+Route::post('messages/{room}', 'ChatController@store');
+
+Route::get('rooms/all', 'RoomController@all');
+Route::post('rooms', 'RoomController@store');
+route::get('rooms/{room}', 'RoomController@show');
+Route::delete('rooms/{room}', 'RoomController@destroy');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Room;
 use App\Message;
 use App\Events\MessageSent;
 use Illuminate\Http\Request;
@@ -13,24 +14,22 @@ class ChatController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function messages(Room $room)
     {
-        return view('chat');
+        return $room->messages()->with('user')->limit(50)->get();
     }
 
-    public function messages()
+    public function store(Request $request, Room $room)
     {
-        return Message::with('user')->limit(50)->get();
-    }
-
-    public function store(Request $request)
-    {
-        $message = $request->user()->messages()->create([
+        $message = $room->messages()->create([
+            'user_id' => $request->user()->id,
             'message' => $request->message,
         ]);
 
-        broadcast(new MessageSent($request->user(), $message))->toOthers();
+        $message->user = $request->user;
 
-        return ['message' => 'success'];
+        broadcast(new MessageSent($room, $message))->toOthers();
+
+        return $message;
     }
 }

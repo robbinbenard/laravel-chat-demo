@@ -3,6 +3,6 @@
 @section('content')
 
 <div class="container">
-    <chat-messages :user="{{ Auth::user() }}"></chat-messages>
+    <chat-room :user="{{ Auth::user() }}" :room="{{ $room }}"></chat-room>
 </div>
 @endsection
