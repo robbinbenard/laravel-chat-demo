@@ -20,7 +20,7 @@
                         <div>{{ message.message }}</div>
                     </div>
                 </div>
-                <div class="card-body">
+                <div class="p-3">
                     <div class="input-group chat-input-group mt-0">
                         <input type="text" class="form-control" placeholder="Type a message" v-model="newMessage" @keyup.enter="sendMessage">
                         <div class="input-group-append">
