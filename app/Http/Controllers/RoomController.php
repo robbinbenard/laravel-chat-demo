@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Room;
 use App\Events\RoomCreated;
-use Illuminate\Http\Request;
 use App\Events\RoomDeleted;
+use Illuminate\Http\Request;
 
 class RoomController extends Controller
 {
@@ -62,30 +62,6 @@ class RoomController extends Controller
         broadcast(new RoomCreated($room))->toOthers();
 
         return $room;
-    }
-
-    /**
-     * Join a new room
-     *
-     * @param  Request $request
-     * @param  Room $room
-     * @return void
-     */
-    public function join(Request $request, Room $room)
-    {
-        // todo ?
-    }
-
-    /**
-     * Join a new room
-     *
-     * @param  Request $request
-     * @param  Room $room
-     * @return void
-     */
-    public function leave(Request $request, Room $room)
-    {
-        // todo ?
     }
 
     /**

@@ -57968,7 +57968,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this4 = this;
 
             this.$nextTick(function () {
-                console.log(_this4.$refs.messages.scrollTop);
                 _this4.$refs.messages.scrollTop = _this4.$refs.messages.scrollHeight;
             });
         }
@@ -58019,7 +58018,9 @@ var render = function() {
           { ref: "messages", staticClass: "card-body chat-messages pb-0" },
           _vm._l(_vm.messages, function(message) {
             return _c("div", { key: message.id, staticClass: "chat-message" }, [
-              _c("div", { staticClass: "user-name" }, [_vm._v("Robbin")]),
+              _c("div", { staticClass: "user-name" }, [
+                _vm._v(_vm._s(message.user.name))
+              ]),
               _vm._v(" "),
               _c("div", [_vm._v(_vm._s(message.message))])
             ])

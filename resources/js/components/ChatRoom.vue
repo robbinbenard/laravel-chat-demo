@@ -16,7 +16,7 @@
                 <div class="card-header">{{ room.name }}</div>
                 <div class="card-body chat-messages pb-0" ref="messages">
                     <div v-for="message in messages" :key="message.id" class="chat-message">
-                        <div class="user-name">Robbin</div>
+                        <div class="user-name">{{ message.user.name }}</div>
                         <div>{{ message.message }}</div>
                     </div>
                 </div>
@@ -88,9 +88,7 @@ export default {
     watch: {
         messages () {
             this.$nextTick(() => {
-                console.log(this.$refs.messages.scrollTop)
-                this.$refs.messages.scrollTop
-                    = this.$refs.messages.scrollHeight
+                this.$refs.messages.scrollTop = this.$refs.messages.scrollHeight
             })
         }
     }
